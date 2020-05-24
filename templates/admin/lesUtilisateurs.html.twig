@@ -1,0 +1,101 @@
+{% extends 'baseAdm.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block body %}
+<style> .example-wrapper { margin: 1em auto; max-width: 1050px; width: 90%; font: 18px/1.5 sans-serif; }
+        .example-wrapperBis { margin: 1em auto; max-width: 700px; width: 90%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+<div class="example-wrapper">
+ 
+
+    <h1>Liste des Utilisateurs</h1>
+    </br></br>
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <center><th>Nom</th></center>
+        <center><th>Téléphone</th></center>
+        <center><th>Adresse mail</th></center>
+        <center><th>Nom d'utilisateur</th></center>
+        <center><th>Téléphone Banque</th></center>
+        <center><th>Type</th></center>
+        <center><th></th></center>
+      </tr>
+    </thead>
+    <tbody>
+    {% for pro in pros %}
+      <tr>
+        <center><td>{{ pro.getNomPe() }}</td></center>
+        <center><td>0{{ pro.getTelephonePe() }}</td></center>
+        <center><td>{{ pro.getEmail() }}</td></center>
+        <center><td>{{ pro.getUsername() }}</td></center>
+        <center><td>0{{ pro.getTelBanque() }}</td></center>
+        <center><td>{{ pro.getType() }}</td></center>
+        <form method="post" action="/supprimer">
+            <input name="login" type= "hidden" value ={{ pro.getUsername() }} size = "1" />
+            <center><td><input type="submit" value="Supprimer" class="btn btn-danger" name="Supprimer"/></td><center>
+        </form>
+      </tr> 
+    {% endfor %}
+    {% for cli in clis %}
+      <tr>
+        <center><td>{{ cli.getNomPe() }}</td></center>
+        <center><td>0{{ cli.getTelephonePe() }}</td></center>
+        <center><td>{{ cli.getEmail() }}</td></center>
+        <center><td>{{ cli.getUsername() }}</td></center>
+        <center><td>0{{ cli.getTelBanque() }}</td></center>
+        <center><td>{{ cli.getType() }}</td></center>
+        <form method="post" action="/supprimer">
+            <input name="login" type= "hidden" value ={{ cli.getUsername() }} size = "1" />
+            <center><td><input type="submit" value="Supprimer" class="btn btn-danger" name="Supprimer"/></td><center>
+        </form>
+      </tr> 
+    {% endfor %}
+    {% for loc in locs %}
+      <tr>
+        <center><td>{{ loc.getNomPe() }}</td></center>
+        <center><td>0{{ loc.getTelephonePe() }}</td></center>
+        <center><td>{{ loc.getEmail() }}</td></center>
+        <center><td>{{ loc.getUsername() }}</td></center>
+        <center><td>0{{ loc.getTelBanque() }}</td></center>
+        <center><td>{{ loc.getType() }}</td></center>
+        <form method="post" action="/supprimer">
+            <input name="login" type= "hidden" value ={{ loc.getUsername() }} size = "1" />
+            <center><td><input type="submit" value="Supprimer" class="btn btn-danger" name="Supprimer"/></td><center>
+        </form>
+      </tr> 
+    {% endfor %}
+    </tbody>
+  </table>
+  </br>
+
+</div>
+
+<div class="example-wrapperBis">
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <center><th>Nom d'utilisateur</th></center>
+        <center><th>Adresse mail</th></center>
+        <center><th>Type</th></center>
+      </tr>
+    </thead>
+    <tbody>
+{% for adm in adms %}
+      <tr class="info">
+        <center><td>{{ adm.getUsername() }}</td></center>
+        <center><td>{{ adm.getEmail() }}</td></center>
+        <center><td>{{ adm.getType() }}</td></center>
+      </tr> 
+    {% endfor %}
+    </tbody>
+  </table>
+  </br>
+  </br>
+
+
+</div>
+{% endblock %}

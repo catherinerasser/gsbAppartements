@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <meta charset="UTF-8">
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('build/images/logo.ico') }}" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+        {{ encore_entry_link_tags('css/custom') }}
+       {% endblock %}
+    </head>
+    <body>  
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+    <img class="navbar-brand" src="{{ asset('build/images/logo.png') }}"/>
+      <a class="navbar-brand" href="/admin">Espace Admin</a>
+      </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/admin">Mon compte</a></li>
+      <li><a href="/lesUtilisateurs">Les Utilisateurs</a></li>
+      <li><a href="/lesAppartements">Les Appartements</a></li>
+      <li><a href="/lesCotisations">Les Cotisations</a></li>
+      <li><a href="/lesDemandes">Les Demandes</a></li>
+      <li><a href="/lesVisites">Les Visites</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="{{ path('app_logout') }}"><span class="glyphicon glyphicon-log-out"></span> Me déconnecter</a></li>
+    </ul>
+  </div>
+</nav> </br></br>
+
+
+        {% block body %}{% endblock %}
+        {% block javascripts %}
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        {% endblock %}
+    </body>
+</html>

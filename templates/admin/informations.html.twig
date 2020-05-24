@@ -1,0 +1,51 @@
+{% extends 'baseAdm.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block body %}
+<style>    .example-wrapper { margin: 1em auto; max-width: 900px; width: 90%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+<div class="example-wrapper">
+
+
+<h1>Détails Cotisation de {{ user.getNomPe() }}</h1></br>
+ </br>
+ <table class="table table-hover">
+    <thead>
+      <tr>
+        <center><th>Appartement</th></center>
+        <center><th>Prix Location</th></center>
+        <center><th>Prix Charges</th></center>
+        <center><th>Prix total</th></center>
+        <center><th>Cotisation</th></center>
+      </tr>
+    </thead>
+    <tbody>
+    {% for appart in user.getAppartements() %}
+      <tr>
+        <center><td>{{ appart.getRue() }}</td></center>
+        <center><td>{{ appart.getPrixLoc()*30 }}€/mois</td></center>
+        <center><td>{{ appart.getPrixCharges()*30 }}€/mois</td></center>
+        <center><td>{{ appart.getPrixLoc()*30 + appart.getPrixCharges()*30 }}€/mois</td></center>
+        <center><td>{{ (appart.getPrixLoc()*30 + appart.getPrixCharges()*30)*0.07 }}€/mois</td></center>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  </br>
+ 
+       {% set somme = 0 %}
+        {% for appart in user.getAppartements() %}
+            {% set somme = somme + (appart.getPrixLoc()*30 + appart.getPrixCharges()*30)*0.07 %}
+        {% endfor %} 
+    
+   <p><strong>Total des Cotisations</strong> : {{ somme }}€/mois</p>
+  
+
+  <form method="post" action="/lesCotisations">
+            <center><td><button  type="submit" class="btn btn-warning" >Retour</button></td><center>
+        </form>
+
+</div>
+{% endblock %}

@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+
+<style>    .example-wrapper { margin: 1em auto; max-width: 700px; width: 90%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+{% block stylesheets %}
+{{ parent()}}
+{% endblock %}
+
+<div class="example-wrapper">
+<h1>S'inscrire </h1>
+
+</br></br></br>
+ <form class="form-horizontal" action="/valideInscription">
+ <div class="form-group">
+      <label class="control-label col-sm-3" for="nom">Nom :</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" id="nom" placeholder="Entrer nom de famille" name="nom">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="prenom">Prénom :</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" id="prenom" placeholder="Entrer prénom" name="prenom">
+      </div>
+    </div>
+     <div class="form-group">
+      <label class="control-label col-sm-3" for="anniv">Anniversaire :</label>
+      <div class="col-sm-7">
+        <input type="date" class="form-control" id="anniv" placeholder="Entrer date de naissance" name="anniv">
+      </div>
+    </div>
+    </br>
+  <div class="form-group">
+      <label class="control-label col-sm-3" for="adresse">Adresse :</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" id="adresse" placeholder="Entrer adresse" name="adresse">
+      </div>
+    </div>
+ <div class="form-group">
+      <label class="control-label col-sm-3" for="cp">Code postal :</label>
+      <div class="col-sm-7">
+        <input oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" class="form-control" id="cp" placeholder="Entrer code postal" name="cp">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="ville">Ville :</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" id="ville" placeholder="Entrer ville" name="ville">
+      </div>
+    </div>
+    </br>
+ <div class="form-group">
+      <label class="control-label col-sm-3" for="tel">Téléphone :</label>
+      <div class="col-sm-7">
+        <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" class="form-control" id="tel" placeholder="Entrer numéro de téléphone" name="tel">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="email">Email :</label>
+      <div class="col-sm-7">
+        <input type="email" class="form-control" id="email" placeholder="Entrer email" name="email">
+      </div>
+    </div>
+    </br>
+     <div class="form-group">
+      <label class="control-label col-sm-3" for="telB">Tel banque :</label>
+      <div class="col-sm-7">
+        <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" class="form-control" id="telB" placeholder="Entrer numéro de téléphone de votre banque" name="telB">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="rib">RIB :</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" id="rib" placeholder="Entrer RIB" name="rib">
+      </div>
+    </div>
+    </br>
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="login">Login :</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" id="login" placeholder="Entrer login" name="login">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="mdp">Mot de passe :</label>
+      <div class="col-sm-7">          
+        <input type="password" class="form-control" id="mdp" placeholder="Entrer mot de passe" name="mdp">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="repeat">Confirmation :</label>
+      <div class="col-sm-7">          
+        <input type="password" class="form-control" id="repeat" placeholder="Confirmer mot de passe" name="repeat">
+      </div>
+    </div>
+    </br>
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="type">En tant que :</label>
+        <div class="col-sm-7">
+        <select class="form-control" name="type">
+        <option>Client</option>
+        <option>Propriétaire</option>
+        </select>
+        </div>
+    </div>
+    
+    </br></br>
+    <div>
+        <center>
+            <input type="submit" value="Valider" class="btn btn-success" name="valider"/>
+            <input type="reset" value="Annuler" class="btn btn-danger" name="annuler"/>
+        </center>
+        </div>
+  </form>
+
+</div>
+{% endblock %}

@@ -1,0 +1,161 @@
+{% extends 'basePro.html.twig' %}
+
+{% block title %}Propriétaire{% endblock %}
+
+{% block body %}
+<style>    .example-wrapper { margin: 1em auto; max-width: 1000px; width: 90%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+<div class="example-wrapper">
+ 
+ <h1>Ajouter un Appartements</h1>
+
+ </br></br></br>
+
+  <form class="form-horizontal" action="/valideCreation">
+ <div class="form-group">
+      <label class="control-label col-sm-3" for="nom">Nom :</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" id="nom" placeholder="Entrer le nom d'appartement" name="nom">
+      </div>
+    </div>
+    </br>
+    <div class="form-group">
+    <label class="control-label col-sm-3" for="nb">Nombre de :</label>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="voy">Voyageurs:</label>
+      <div class="col-sm-7">
+        <input oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" class="form-control" id="voy" placeholder="Entrer un nombre de voyageurs" name="voy">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="cham">Chambres :</label>
+      <div class="col-sm-7">
+        <input oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" class="form-control" id="cham" placeholder="Entrer un nombre de chambres" name="cham">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="lit">Lits :</label>
+      <div class="col-sm-7">
+        <input oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" class="form-control" id="lit" placeholder="Entrer un nombre de lits" name="lit">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="sb">Salles de bain :</label>
+      <div class="col-sm-7">
+        <input oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" class="form-control" id="sb" placeholder="Entrer un nombre de salles de bain" name="sb">
+      </div>
+    </div>
+    </br>
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="wifi">Wifi :</label>
+        <div class="col-sm-7">
+        <select class="form-control" name="wifi">
+        <option>Oui</option>
+        <option>Non</option>
+        </select>
+        </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="chau">Chauffage :</label>
+        <div class="col-sm-7">
+        <select class="form-control" name="chau">
+        <option>Oui</option>
+        <option>Non</option>
+        </select>
+        </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="cui">Cuisine :</label>
+        <div class="col-sm-7">
+        <select class="form-control" name="cui">
+        <option>Oui</option>
+        <option>Non</option>
+        </select>
+        </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="lave">Lave-linge :</label>
+        <div class="col-sm-7">
+        <select class="form-control" name="lave">
+        <option>Oui</option>
+        <option>Non</option>
+        </select>
+        </div>
+    </div>
+    </br>
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="type">Type d'appartement :</label>
+        <div class="col-sm-7">
+        <select class="form-control" name="type">
+        <option>Studio</option>
+        <option>F1</option>
+        <option>F2</option>
+        <option>F3</option>
+        </select>
+        </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="prixloc">Prix de location :</label>
+      <div class="col-sm-7">
+        <input oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" class="form-control" id="prixloc" placeholder="Entrer un prix de location quotidien" name="prixloc">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="prixchar">Prix des charges :</label>
+      <div class="col-sm-7">
+        <input oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" class="form-control" id="prixchar" placeholder="Entrer un prix de charges quotidien" name="prixchar">
+      </div>
+    </div>
+    </br>
+  <div class="form-group">
+      <label class="control-label col-sm-3" for="adresse">Adresse :</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" id="adresse" placeholder="Entrer adresse" name="adresse">
+      </div>
+    </div>
+ <div class="form-group">
+      <label class="control-label col-sm-3" for="arron">Arrondissement :</label>
+      <div class="col-sm-7">
+        <input oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" class="form-control" id="arron" placeholder="Entrer l'arrondissement" name="arron">
+      </div>
+    </div>
+    
+    </br>
+ <div class="form-group">
+      <label class="control-label col-sm-3" for="eta">Etage :</label>
+      <div class="col-sm-7">
+        <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" class="form-control" id="eta" placeholder="Entrer l'étage" name="eta">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="asc">Ascenseur :</label>
+        <div class="col-sm-7">
+        <select class="form-control" name="asc">
+        <option>Oui</option>
+        <option>Non</option>
+        </select>
+        </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="prea">Préavis :</label>
+        <div class="col-sm-7">
+        <select class="form-control" name="prea">
+        <option>Oui</option>
+        <option>Non</option>
+        </select>
+        </div>
+    </div>
+     <input type="hidden" value={{app.user.getId()}} id="id" name="id">
+    </br></br>
+    <div>
+        <center>
+            <input type="submit" value="Valider" class="btn btn-success" name="valider"/>
+            <input type="reset" value="Annuler" class="btn btn-danger" name="annuler"/>
+        </center>
+        </div>
+  </form>
+
+</div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'baseAdm.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block body %}
+<style>    .example-wrapper { margin: 1em auto; max-width: 900px; width: 90%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+<div class="example-wrapper">
+
+
+<h1>Liste des Cotisations</h1>
+    </br></br>
+
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <center><th>Nom</th></center>
+        <center><th>Prenom</th></center>
+        <center><th>Adresse</th></center>
+        <center><th>Ville</th></center>
+        <center><th>Cotisation</th></center>
+        <center><th></th></center>
+      </tr>
+    </thead>
+    <tbody>
+    {% set total = 0 %}
+    {% for pro in pros %}
+    {% set somme = 0 %}
+        {% for appart in pro.getAppartements() %}
+            {% set somme = somme + (appart.getPrixLoc()*30 + appart.getPrixCharges()*30)*0.07 %}
+        {% endfor %} 
+    {% set total = total + somme %}
+      <tr>
+        <center><td>{{ pro.getNomPe() }}</td></center>
+        <center><td>{{ pro.getPrenomPe() }}</td></center>
+        <center><td>{{ pro.getAdressePe() }}</td></center>
+        <center><td>{{ pro.getCodePostal() }} {{ pro.getNomVille() }}</td></center>
+        <center><td>{{ somme }}€/mois</td></center>
+        <form method="post" action="/informations">
+            <input name="login" type= "hidden" value ={{ pro.getUsername() }} size = "1" />
+            <center><td><button  type="submit" class="btn btn-info" >Info</button></td><center>
+        </form>
+      </tr> 
+    {% endfor %}
+
+
+<p><strong>Total des Cotisations</strong> : {{ total }}€/mois</p>
+</br>
+
+
+</div>
+{% endblock %}

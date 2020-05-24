@@ -1,0 +1,58 @@
+{% extends 'baseCli.html.twig' %}
+
+{% block title %}Client{% endblock %}
+
+{% block body %}
+<style>    .example-wrapper { margin: 1em auto; max-width: 1050px; width: 90%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+<div class="example-wrapper">
+ 
+
+
+    <h1>Mes Visites</h1>
+    <form method="post" action="/ajoutVCli">
+  <input type="submit" value="Ajouter" class="btn btn-warning" name="Ajouter"/>
+</form>
+    </br></br>
+
+
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <center><th>Appartement</th></center>
+        <center><th>Adresse</th></center>
+        <center><th>Ville</th></center>
+        <center><th>Date de visite</th></center>
+        <center><th></th></center>
+        <center><th></th></center>
+      </tr>
+    </thead>
+    <tbody>
+    {% for visi in app.user.getVisites() %}
+    <tr>
+        <center><td>{{ visi.getIdAppartement().getNomAppart() }}</td></center>
+        <center><td>{{ visi.getIdAppartement().getRue() }}</td></center>
+        <center><td>{{ visi.getIdAppartement().getIdPro().getCodePostal() }} {{ visi.getIdAppartement().getIdPro().getNomVille() }}</td></center>
+        <center><td>{{ visi.getDateVisite()|date('d/m/Y') }}</td></center>
+         <form method="post" action="/modifVCli">
+            <input name="id" type= "hidden" value ={{ visi.getId() }} size = "1" />
+            <center><td><input type="submit" value="Modif" class="btn btn-success" name="Modif"/></td><center>
+        </form>
+         <form method="post" action="/suppVCli">
+            <input name="id" type= "hidden" value ={{ visi.getId() }} size = "1" />
+            <center><td><input type="submit" value="Suppr" class="btn btn-danger" name="Suppr"/></td><center>
+        </form>
+    </tr> 
+    {% endfor %}
+    
+    </tbody>
+  </table>
+  </br>
+
+
+
+</div>
+
+{% endblock %}

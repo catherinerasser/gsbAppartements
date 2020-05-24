@@ -1,0 +1,54 @@
+{% extends 'baseLoc.html.twig' %}
+
+{% block title %}Locataire{% endblock %}
+
+{% block body %}
+<style>    .example-wrapper { margin: 1em auto; max-width: 900px; width: 90%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+<div class="example-wrapper">
+ 
+
+
+<h1>Détails de l'appartement</h1></br>
+    </br>
+    
+        <strong><p>Locataire actuel : </strong>{{app.user.getNomPe()}}</p>
+        <strong><p>Date de fin de location : </strong>{{ app.user.getNumAppart().getDateLibre()|date('d/m/Y') }}</p>
+        </br>
+        <strong><p>Nom : </strong> {{ app.user.getNumAppart().getNomAppart() }}</p>
+        <strong><p>Détails : </strong> {{ app.user.getNumAppart().getNbVoy() }} voyageur(s) • {{ app.user.getNumAppart().getNbChamb() }} chambre(s) • {{ app.user.getNumAppart().getNbLits() }} lit(s) • {{ app.user.getNumAppart().getNbSb() }} salle(s) de bain</p>
+        <strong><p>Particuliarités : </strong>{% if app.user.getNumAppart().getWifi() %} Wifi • {% endif %}{% if app.user.getNumAppart().getChauffage() %}Chauffage • {% endif %}{% if app.user.getNumAppart().getCuisine() %}Cuisine • {% endif %}{% if app.user.getNumAppart().getLaveLinge() %}Lave-linge{% endif %}</p></p>
+        <strong><p>Type d'appartement : </strong>{{ app.user.getNumAppart().getTypeAppart() }}</p>
+        <strong><p>Prix de location : </strong>{{ app.user.getNumAppart().getPrixLoc()*30 }}€/mois</p>
+        <strong><p>Prix des charges : </strong>{{ app.user.getNumAppart().getPrixCharges()*30 }}€/mois</p>
+        <strong><p>Rue : </strong>{{ app.user.getNumAppart().getRue() }}</p>
+        <strong><p>Arrondissement : </strong>{{ app.user.getNumAppart().getArrondissement() }}ème</p>
+        <strong><p>Ville : </strong>{{ app.user.getNumAppart().getIdPro().getNomVille() }}</p>
+        <strong><p>Etage : </strong>{{ app.user.getNumAppart().getEtage() }}</p>
+        {% if app.user.getNumAppart().getAscenseur()==true %}
+        <strong><p>Ascenseur : </strong>Oui</p>
+        {% else %}
+        <strong><p>Ascenseur : </strong> Non</p>
+        {% endif %}
+        {% if app.user.getNumAppart().getPreavis()==true %}
+        <strong><p>Préavis : </strong>Oui</p>
+        {% else %}
+        <strong><p>Préavis : </strong>Non</p>
+        {% endif %}
+        <strong><p>Propriétaire : </strong>M/Mme {{ appart.getIdPro().getNomPe() }}  {{ appart.getIdPro().getPrenomPe() }} - {{ appart.getIdPro().getAdressePe() }} {{ appart.getIdPro().getCodePostal() }} {{ appart.getIdPro().getNomVille() }} - 0{{ appart.getIdPro().getTelephonePe() }}</p>
+        <strong><p>Photos : </strong></p>
+        {% for photo in app.user.getNumAppart().getPhotos() %}
+        <img src="{{ asset('build/images/' ~ photo.getNomPhoto() ~ '.jpg') }}" alt={{photo.getNomPhoto()}} style='width:22%;' >
+        {% endfor %}
+    </br>
+ </br>
+ </br>
+ <form method="post" action="/monAppart">
+            <center><td><button  type="submit" class="btn btn-warning" >Retour</button></td><center>
+        </form>
+        </br>
+        </br>
+   
+</div>
+{% endblock %}

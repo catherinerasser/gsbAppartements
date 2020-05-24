@@ -1,0 +1,49 @@
+{% extends 'baseCli.html.twig' %}
+
+{% block title %}Client{% endblock %}
+
+{% block body %}
+<style>    .example-wrapper { margin: 1em auto; max-width: 900px; width: 90%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+<div class="example-wrapper">
+
+
+<h1>Détails de l'appartement</h1></br>
+    </br>
+    
+    
+        <strong><p>Nom : </strong> {{ appart.getNomAppart() }}</p>
+        <strong><p>Détails : </strong> {{ appart.getNbVoy() }} voyageur(s) • {{ appart.getNbChamb() }} chambre(s) • {{ appart.getNbLits() }} lit(s) • {{ appart.getNbSb() }} salle(s) de bain</p>
+        <strong><p>Particuliarités : </strong>{% if appart.getWifi() %} Wifi • {% endif %}{% if appart.getChauffage() %}Chauffage • {% endif %}{% if appart.getCuisine() %}Cuisine • {% endif %}{% if appart.getLaveLinge() %}Lave-linge{% endif %}</p></p>
+        <strong><p>Type d'appartement : </strong>{{ appart.getTypeAppart() }}</p>
+        <strong><p>Prix de location : </strong>{{ appart.getPrixLoc()*30 }}€/mois et {{ appart.getPrixLoc() }}€/jour</p>
+        <strong><p>Prix des charges : </strong>{{ appart.getPrixCharges()*30 }}€/mois et {{ appart.getPrixCharges() }}€/jour</p>
+        <strong><p>Rue : </strong>{{ appart.getRue() }}</p>
+        <strong><p>Arrondissement : </strong>{{ appart.getArrondissement() }}ème</p>
+        <strong><p>Ville : </strong>{{ appart.getIdPro().getNomVille() }}</p>
+        <strong><p>Etage : </strong>{{ appart.getEtage() }}</p>
+        {% if appart.getAscenseur()==true %}
+        <strong><p>Ascenseur : </strong>Oui</p>
+        {% else %}
+        <strong><p>Ascenseur : </strong> Non</p>
+        {% endif %}
+        {% if appart.getPreavis()==true %}
+        <strong><p>Préavis : </strong>Oui</p>
+        {% else %}
+        <strong><p>Préavis : </strong>Non</p>
+        {% endif %}
+        <strong><p>Date libre : </strong>{{ appart.getDateLibre()|date('d/m/Y') }}</p>
+        <strong><p>Propriétaire : </strong>M/Mme {{ appart.getIdPro().getNomPe() }}  {{ appart.getIdPro().getPrenomPe() }} - {{ appart.getIdPro().getAdressePe() }} {{ appart.getIdPro().getCodePostal() }} {{ appart.getIdPro().getNomVille() }} - 0{{ appart.getIdPro().getTelephonePe() }}</p>
+        <strong><p>Photos : </strong></p>
+        {% for photo in appart.getPhotos() %}
+        <img src="{{ asset('build/images/' ~ photo.getNomPhoto() ~ '.jpg') }}" alt={{photo.getNomPhoto()}} style='width:22%;' >
+        {% endfor %}
+    </br>
+ </br>
+ </br>
+        </br>
+        </br>
+   
+</div>
+{% endblock %}

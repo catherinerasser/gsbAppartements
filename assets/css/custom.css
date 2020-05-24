@@ -1,0 +1,39 @@
+a{
+    color:green;
+}
+
+body {
+    background-color: white;
+}
+
+.space-left {
+    padding-left: 15px;
+  }
+
+  .space-bottom {
+    padding-bottom: 50px;
+  } 
+
+h1{
+    padding-bottom: 0;
+}
+
+  .tableA {
+    width:100%;
+    margin-top: 0px;
+}
+ 
+table {
+    width:100%;
+    margin-top: 0;
+}
+
+  .th .td { 
+	font-family: Poppins; 
+	font-size: 1.20em; 
+	text-align: left;  
+	border: 1px solid transparent; 
+    padding: 5px;		
+    background-color: transparent;
+
+} 

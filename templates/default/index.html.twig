@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+
+<style>
+    body{
+        background:url('{{ asset('build/images/habitation2.jpg') }}');
+        background-size: cover;
+    }
+    .titre{
+            margin-top:250px;
+            margin-left:150px;
+            text-shadow: 5px 4px 4px #30336b;
+            color: white;
+            font-style: oblique;
+    }
+    h1{
+        font-size :6.8em;
+        font-weight: 700;
+    }
+    h2{
+        font-size :4.2em;
+    }
+</style>
+{% block stylesheets %}
+{{ parent()}}
+{% endblock %}
+<div class="titre">
+<h1>GSB </h1>
+
+<h2>Locations d'Appartements</h2>
+</div>
+{% endblock %}
